@@ -1,6 +1,6 @@
 export const getArticle = async (slug: string) => {
   const response = await fetch(
-    process.env.NEXT_PUBLIC_STRAPI_ENDPOINT + "/api/articles",
+    process.env.NEXT_PUBLIC_STRAPI_ENDPOINT + "/api/articles?populate=*",
     {
       headers: {
         "Content-Type": "application/json",
