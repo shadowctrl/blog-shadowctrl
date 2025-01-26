@@ -5,6 +5,7 @@ import { Calendar, Clock, User } from "lucide-react";
 import Image from "next/image";
 import { createElement } from "react";
 import RichText from "@/app/components/richText";
+import { dateFormat } from "@/utils/dateFormat";
 
 interface Props {
   params: {
@@ -34,13 +35,7 @@ const Page: NextPage<Props> = async ({ params }) => {
             </div>
             <div className="flex items-center space-x-2">
               <Calendar className="w-5 h-5" />
-              <span>
-                {new Date(data.publishedAt).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </span>
+              <span>{dateFormat(data.publishedAt)}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Clock className="w-5 h-5" />
