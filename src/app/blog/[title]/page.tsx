@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { getArticle } from "@/hooks/getArticle";
+import { getStrapiData } from "@/hooks/getStrapiData";
 
 import { Calendar, Clock, User } from "lucide-react";
 import Image from "next/image";
@@ -14,8 +14,9 @@ interface Props {
 
 const Page: NextPage<Props> = async ({ params }) => {
   const { title } = await params;
-  const data = await getArticle(title);
+  const { status, data } = await getStrapiData(title);
 
+  if (status !== 200) return <h1>404</h1>;
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:px-8">
       <article className="bg-white dark:bg-neutral-900 shadow-lg rounded-lg overflow-hidden">
