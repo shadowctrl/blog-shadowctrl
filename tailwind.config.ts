@@ -8,10 +8,22 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        mars: "var(--font-mars)",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
         "pri-col": "var(--pri-col)",
+      },
+      animation: {
+        bounce: "navbarBounce 0.1s ease-in-out 3",
+      },
+      keyframes: {
+        navbarBounce: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-0.3vh)" },
+        },
       },
     },
   },
