@@ -19,7 +19,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 
   if (status !== 200) return <h1>404</h1>;
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:px-8">
+    <div className="max-w-4xl mx-auto px-4 py-8 md:px-8 mt-12">
       <article className="bg-white dark:bg-neutral-900 shadow-lg rounded-lg overflow-hidden">
         <header className="p-6 bg-pri-col/10">
           <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
