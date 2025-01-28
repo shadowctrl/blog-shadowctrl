@@ -25,7 +25,7 @@ const Navbar: NextPage<Props> = ({}) => {
       <Link href="/" className="cursor-pointer flex items-center gap-[2px]">
         <Image src="/assets/logo.svg" alt="shadowctrl" width={20} height={20} />
         <h1 className="font-mars font-black text-[18px] text-pri-col tracking-[-6px] pt-[0.5vh]">
-          Shadowctrl
+          Shadowctrl &nbsp; Blogs
         </h1>
       </Link>
 
