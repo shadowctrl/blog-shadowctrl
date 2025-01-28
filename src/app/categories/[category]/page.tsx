@@ -4,10 +4,11 @@ import { CategoryData, DataArrayType } from "@/types";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { NextPage } from "next";
 
+interface Params {
+  category: string;
+}
 interface Props {
-  params: {
-    category: string;
-  };
+  params: Promise<Params>;
 }
 
 const Page: NextPage<Props> = async ({ params }) => {

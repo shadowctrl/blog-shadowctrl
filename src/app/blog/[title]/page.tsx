@@ -7,13 +7,14 @@ import { createElement } from "react";
 import RichText from "@/app/components/richText";
 import { dateFormat } from "@/utils/dateFormat";
 
+interface Params {
+  title: string;
+}
 interface Props {
-  params: {
-    title: string;
-  };
+  params: Promise<Params>;
 }
 
-const Page: NextPage<Props> = async ({ params }) => {
+const Page: NextPage<Props> = async ({ params }): Promise<any> => {
   const { title } = await params;
   const { status, data } = await getStrapiData(title);
 
