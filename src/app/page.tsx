@@ -1,10 +1,10 @@
-import React from "react";
-import Image from "next/image";
 import { getStrapiData } from "@/hooks/getStrapiData";
-import { DataArrayType } from "@/types";
-import { dateFormat } from "@/utils/dateFormat";
-import Link from "next/link";
 import BlogCard from "./components/blogCard";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blogs Home | shadowctrl blogs",
+};
 
 const BlogListPage = async () => {
   const { data, status } = await getStrapiData();

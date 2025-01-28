@@ -1,9 +1,7 @@
 import { NextPage } from "next";
 import { getStrapiData } from "@/hooks/getStrapiData";
-
 import { Calendar, Clock, User } from "lucide-react";
 import Image from "next/image";
-import { createElement } from "react";
 import RichText from "@/app/components/richText";
 import { dateFormat } from "@/utils/dateFormat";
 
@@ -12,6 +10,14 @@ interface Params {
 }
 interface Props {
   params: Promise<Params>;
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { title } = await params;
+  const { status, data } = await getStrapiData(title);
+  return {
+    title: `${data.title} | shadowctrl blogs`,
+  };
 }
 
 const Page: NextPage<Props> = async ({ params }): Promise<any> => {

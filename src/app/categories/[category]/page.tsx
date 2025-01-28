@@ -1,14 +1,21 @@
 import BlogCard from "@/app/components/blogCard";
 import { getCategory } from "@/hooks/getStrapiData";
-import { CategoryData, DataArrayType } from "@/types";
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { NextPage } from "next";
-
+import { Metadata } from "next";
 interface Params {
   category: string;
 }
 interface Props {
   params: Promise<Params>;
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { category } = await params;
+  return {
+    title: `${
+      category.charAt(0).toUpperCase() + category.slice(1)
+    } Blogs | shadowctrl blogs`,
+  };
 }
 
 const Page: NextPage<Props> = async ({ params }) => {

@@ -1,10 +1,14 @@
 import { getCategories } from "@/hooks/getStrapiData";
 import { CategoryData } from "@/types";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
 
 interface Props {}
+
+export const metadata: Metadata = {
+  title: "Browse by Category | shadowctrl blogs",
+};
 
 const Page: NextPage<Props> = async ({}) => {
   const { data, status } = await getCategories();
