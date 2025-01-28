@@ -23,3 +23,43 @@ export const getStrapiData = async (
 
   return { status: 200, data };
 };
+
+export const getCategories = async (): Promise<StrapiDataType> => {
+  const response = await fetch(
+    process.env.NEXT_PUBLIC_STRAPI_ENDPOINT + "/api/categories?populate=*",
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
+      },
+    }
+  );
+  if (!response.ok) return { status: 500, data: null };
+
+  try {
+    const data = await response.json();
+    return { status: 200, data };
+  } catch {
+    return { status: 500, data: null };
+  }
+};
+
+export const getCategory = async (slug: string): Promise<StrapiDataType> => {
+  const response = await fetch(
+    process.env.NEXT_PUBLIC_STRAPI_ENDPOINT +
+      `/api/articles?filters[category][slug][$eq]=${slug}&populate=*`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
+      },
+    }
+  );
+  if (!response.ok) return { status: 500, data: null };
+  try {
+    const data = await response.json();
+    return { status: 200, data };
+  } catch {
+    return { status: 500, data: null };
+  }
+};
