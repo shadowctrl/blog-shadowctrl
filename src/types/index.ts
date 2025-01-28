@@ -20,12 +20,14 @@ export interface DataArrayContent {
   type: string;
   level: number;
   children: any;
+  content: any;
 }
 export interface Author {
   name: string;
   email: string;
 }
 export interface DataArrayType {
+  id: number;
   title: string;
   slug: string;
   description: string;
@@ -33,4 +35,11 @@ export interface DataArrayType {
   content: DataArrayContent;
   cover?: DataArrayCover;
   author: Author;
+}
+
+export interface CategoryData {
+  id: number;
+  name: string;
+  slug: string;
+  articles: DataArrayType;
 }
