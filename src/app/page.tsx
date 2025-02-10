@@ -1,5 +1,7 @@
+import React from "react";
 import { getStrapiData } from "@/hooks/getStrapiData";
 import BlogCard from "./components/blogCard";
+import { DataArrayType } from "@/types";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,11 +12,24 @@ const BlogListPage = async () => {
   const { data, status } = await getStrapiData();
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 mt-12">
-      <h1 className="text-4xl font-bold mb-8 text-[--foreground]">
-        Blog Posts
-      </h1>
-      <BlogCard data={data.data} />
+    <div className="min-h-screen mt-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="text-center mb-10">
+          <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Latest Blog Posts
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Discover our latest thoughts, ideas, and insights on technology and
+            development.
+          </p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {data.data.map((post: DataArrayType) => (
+            <BlogCard key={post.slug} post={post} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
