@@ -1,5 +1,6 @@
 import BlogCard from "@/app/components/blogCard";
 import { getCategory } from "@/hooks/getStrapiData";
+import { DataArrayType } from "@/types";
 import { NextPage } from "next";
 import { Metadata } from "next";
 interface Params {
@@ -22,9 +23,11 @@ const Page: NextPage<Props> = async ({ params }) => {
   const { category } = await params;
   const { status, data } = await getCategory(category);
   return (
-    <div className="mt-14 p-8">
-      <div className="max-w-4xl">
-        <BlogCard data={data.data} />
+    <div className="mt-14 p-8 max-w-7xl mx-auto">
+      <div className="flex flex-wrap gap-8">
+        {data.data.map((post: DataArrayType) => (
+          <BlogCard key={post.slug} post={post} />
+        ))}
       </div>
     </div>
   );
