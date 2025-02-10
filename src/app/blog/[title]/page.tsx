@@ -4,6 +4,10 @@ import { Calendar, Clock, User } from "lucide-react";
 import Image from "next/image";
 import RichText from "@/app/components/richText";
 import { dateFormat } from "@/utils/dateFormat";
+import dynamic from "next/dynamic";
+const DynamicRelatedBlog = dynamic(
+  () => import("@/app/components/relatedBlog")
+);
 
 interface Params {
   title: string;
@@ -23,11 +27,12 @@ export async function generateMetadata({ params }: Props) {
 const Page: NextPage<Props> = async ({ params }): Promise<any> => {
   const { title } = await params;
   const { status, data } = await getStrapiData(title);
+  const { category } = data;
 
   if (status !== 200) return <h1>404</h1>;
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 md:px-8 mt-12">
-      <article className="bg-white dark:bg-neutral-900 shadow-lg rounded-lg overflow-hidden">
+    <div className="max-w-5xl px-4 py-8 md:px-8 mt-12">
+      <article className="bg-zinc-900 shadow-lg rounded-lg overflow-hidden">
         <header className="p-6 bg-pri-col/10">
           <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
             {data.title}
@@ -67,6 +72,11 @@ const Page: NextPage<Props> = async ({ params }): Promise<any> => {
           <RichText content={data.content} />
         </div>
       </article>
+      <div>
+        {category && (
+          <DynamicRelatedBlog category={category} currentArticleSlug={title} />
+        )}
+      </div>
     </div>
   );
 };
