@@ -4,7 +4,8 @@ export const getStrapiData = async (
   slug?: string | undefined
 ): Promise<StrapiDataType> => {
   const response = await fetch(
-    process.env.NEXT_PUBLIC_STRAPI_ENDPOINT + "/api/articles?populate=*",
+    process.env.NEXT_PUBLIC_STRAPI_ENDPOINT +
+      "/api/articles?populate=cover&populate=author",
     {
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +27,7 @@ export const getStrapiData = async (
 
 export const getCategories = async (): Promise<StrapiDataType> => {
   const response = await fetch(
-    process.env.NEXT_PUBLIC_STRAPI_ENDPOINT + "/api/categories?populate=*",
+    process.env.NEXT_PUBLIC_STRAPI_ENDPOINT + "/api/categories",
     {
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +48,7 @@ export const getCategories = async (): Promise<StrapiDataType> => {
 export const getCategory = async (slug: string): Promise<StrapiDataType> => {
   const response = await fetch(
     process.env.NEXT_PUBLIC_STRAPI_ENDPOINT +
-      `/api/articles?filters[category][slug][$eq]=${slug}&populate=*`,
+      `/api/articles?filters[category][slug][$eq]=${slug}&populate=cover&populate=author`,
     {
       headers: {
         "Content-Type": "application/json",
