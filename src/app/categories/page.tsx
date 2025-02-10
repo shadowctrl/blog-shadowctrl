@@ -3,9 +3,11 @@ import { getCategories } from "@/hooks/getStrapiData";
 import { CategoryData } from "@/types";
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
+import { redirect } from "next/navigation";
 
 const CategoriesPage = async () => {
   const { data, status } = await getCategories();
+  if (status !== 200) redirect("/");
 
   return (
     <div className="min-h-screen bg-black mt-12 py-12 px-4 sm:px-6 lg:px-8">

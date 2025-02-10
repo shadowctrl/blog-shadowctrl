@@ -5,6 +5,7 @@ import Image from "next/image";
 import RichText from "@/app/components/richText";
 import { dateFormat } from "@/utils/dateFormat";
 import dynamic from "next/dynamic";
+import { redirect } from "next/navigation";
 const DynamicRelatedBlog = dynamic(
   () => import("@/app/components/relatedBlog")
 );
@@ -19,6 +20,9 @@ interface Props {
 export async function generateMetadata({ params }: Props) {
   const { title } = await params;
   const { status, data } = await getStrapiData(title);
+
+  if (status !== 200) redirect("/");
+
   return {
     title: `${data.title} | shadowctrl blogs`,
   };

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 
 const BlogListPage = async () => {
   const { data, status } = await getStrapiData();
+  if (status !== 200) return <div>Please try again later</div>;
 
   return (
     <div className="min-h-screen mt-12">

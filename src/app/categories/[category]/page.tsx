@@ -3,6 +3,7 @@ import { getCategory } from "@/hooks/getStrapiData";
 import { DataArrayType } from "@/types";
 import { NextPage } from "next";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 interface Params {
   category: string;
 }
@@ -22,6 +23,8 @@ export async function generateMetadata({ params }: Props) {
 const Page: NextPage<Props> = async ({ params }) => {
   const { category } = await params;
   const { status, data } = await getCategory(category);
+  if (status !== 200) redirect("/categories");
+
   return (
     <div className="mt-14 p-8 max-w-7xl mx-auto">
       <div className="flex flex-wrap gap-8">
