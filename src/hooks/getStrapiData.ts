@@ -5,7 +5,7 @@ export const getStrapiData = async (
 ): Promise<StrapiDataType> => {
   const response = await fetch(
     process.env.NEXT_PUBLIC_STRAPI_ENDPOINT +
-      "/api/articles?populate=cover&populate=author",
+      "/api/articles?populate=cover&populate=author&populate=category",
     {
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +27,8 @@ export const getStrapiData = async (
 
 export const getCategories = async (): Promise<StrapiDataType> => {
   const response = await fetch(
-    process.env.NEXT_PUBLIC_STRAPI_ENDPOINT + "/api/categories",
+    process.env.NEXT_PUBLIC_STRAPI_ENDPOINT +
+      "/api/categories?populate=articles",
     {
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +46,10 @@ export const getCategories = async (): Promise<StrapiDataType> => {
   }
 };
 
-export const getCategory = async (slug: string): Promise<StrapiDataType> => {
+export const getCategory = async (
+  slug: string,
+  currentArticleSlug?: string
+): Promise<StrapiDataType> => {
   const response = await fetch(
     process.env.NEXT_PUBLIC_STRAPI_ENDPOINT +
       `/api/articles?filters[category][slug][$eq]=${slug}&populate=cover&populate=author`,
@@ -59,6 +63,12 @@ export const getCategory = async (slug: string): Promise<StrapiDataType> => {
   if (!response.ok) return { status: 500, data: null };
   try {
     const data = await response.json();
+    if (currentArticleSlug) {
+      const articles = data.data.filter(
+        (article: any) => article.slug !== currentArticleSlug
+      );
+      return { status: 200, data: articles };
+    }
     return { status: 200, data };
   } catch {
     return { status: 500, data: null };
