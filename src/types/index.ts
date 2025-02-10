@@ -35,11 +35,12 @@ export interface DataArrayType {
   content: DataArrayContent;
   cover?: DataArrayCover;
   author: Author;
+  categories?: CategoryData[];
 }
 
 export interface CategoryData {
   id: number;
   name: string;
   slug: string;
-  articles: DataArrayType;
+  articles?: DataArrayType;
 }
