@@ -15,7 +15,7 @@ const navItems = [
   },
   {
     label: "About Us",
-    url: "/about-us",
+    url: "https://shadowctrl.me",
   },
 ];
 
