@@ -16,6 +16,7 @@ const navItems = [
   {
     label: "About Us",
     url: "https://shadowctrl.me",
+    newPage: true,
   },
 ];
 
@@ -35,6 +36,7 @@ const Navbar: NextPage<Props> = ({}) => {
             <Link
               href={item.url}
               key={item.url}
+              target={item.newPage ? "_blank" : "_self"}
               className="mr-[1vw] last:mr-0 text-[12px] font-medium font-mars hover:animate-bounce hover:text-pri-col group"
             >
               <span className="text-pri-col text-[16px] mr-[1px] group-hover:text-pri-col">
