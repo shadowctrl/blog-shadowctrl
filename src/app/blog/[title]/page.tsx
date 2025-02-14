@@ -25,6 +25,8 @@ export async function generateMetadata({ params }: Props) {
 
   return {
     title: `${data.title} | shadowctrl blogs`,
+    description: data.description || "Read this amazing blog on shadowctrl",
+    keywords: data.keywords || "blog, shadowctrl, articles",
   };
 }
 

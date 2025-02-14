@@ -16,7 +16,9 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: `${
       category.charAt(0).toUpperCase() + category.slice(1)
-    } Blogs | shadowctrl blogs`,
+    } Blogs | ShadowCtrl Blogs`,
+    description: `Read the latest ${category} blogs on ShadowCtrl. Stay updated with the newest trends and insights in ${category}.`,
+    keywords: `${category}, blogs, ShadowCtrl, latest ${category} blogs, ${category} insights`,
   };
 }
 

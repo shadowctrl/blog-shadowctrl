@@ -4,6 +4,13 @@ import { CategoryData } from "@/types";
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Browse Categories | shadowctrl blogs",
+  description:
+    "Explore our content through these carefully curated categories. Discover our latest thoughts, ideas, and insights on technology and development.",
+};
 
 const CategoriesPage = async () => {
   const { data, status } = await getCategories();

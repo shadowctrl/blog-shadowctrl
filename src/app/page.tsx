@@ -6,6 +6,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blogs Home | shadowctrl blogs",
+  description:
+    "Discover our latest thoughts, ideas, and insights on technology and development.",
+  keywords: ["blog", "technology", "development", "shadowctrl"],
 };
 
 const BlogListPage = async () => {
