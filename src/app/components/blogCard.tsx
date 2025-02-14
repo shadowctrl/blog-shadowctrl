@@ -12,7 +12,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group relative bg-zinc-900/40 backdrop-blur-sm rounded-xl border border-zinc-800 hover:border-zinc-700 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full transform hover:-translate-y-1"
+      className="max-w-sm group relative bg-zinc-900/40 backdrop-blur-sm rounded-xl border border-zinc-800 hover:border-zinc-700 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full transform hover:-translate-y-1"
     >
       {post.cover?.url && (
         <div className="relative h-64 w-full rounded-t-xl overflow-hidden">

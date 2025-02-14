@@ -24,7 +24,7 @@ const Navbar: NextPage<Props> = ({}) => {
     <div className="fixed top-0 w-full flex justify-between items-center px-[2vw] py-[2vh] border-b border-pri-col bg-black/20 backdrop-blur-[5px] z-10">
       <Link href="/" className="cursor-pointer flex items-center gap-[2px]">
         <Image src="/assets/logo.svg" alt="shadowctrl" width={20} height={20} />
-        <h1 className="font-mars font-black text-[18px] text-pri-col tracking-[-6px] pt-[0.5vh]">
+        <h1 className="font-mars font-black text-[12px] md:text-[18px] text-pri-col tracking-[-6px] pt-[0.5vh] text-balance">
           Shadowctrl &nbsp; Blogs
         </h1>
       </Link>
@@ -35,9 +35,9 @@ const Navbar: NextPage<Props> = ({}) => {
             <Link
               href={item.url}
               key={item.url}
-              className="mr-[1vw] last:mr-0 text-[12px] font-medium font-mars hover:animate-bounce hover:text-pri-col group"
+              className="mr-[1vw] last:mr-0 text-[8px] md:text-[18px] font-medium font-mars hover:animate-bounce hover:text-pri-col group"
             >
-              <span className="text-pri-col text-[16px] mr-[1px] group-hover:text-pri-col">
+              <span className="text-pri-col text-[12px] mr-[1px] group-hover:text-pri-col">
                 #
               </span>
               {item.label}
