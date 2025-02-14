@@ -97,3 +97,4 @@ const CategoriesPage = async () => {
 };
 
 export default CategoriesPage;
+export const dynamic = "force-dynamic";
