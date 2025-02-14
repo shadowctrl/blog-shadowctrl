@@ -39,3 +39,4 @@ const BlogListPage = async () => {
 };
 
 export default BlogListPage;
+export const dynamic = "force-dynamic";
